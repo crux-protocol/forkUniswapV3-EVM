@@ -29,26 +29,25 @@ These contract function calls should ultimately be encoded into a governance pro
 ## Usage
 
 This package vends a CLI for executing a deployment script that results in a full deployment of Uniswap Protocol v3.
-Get the arguments for running the latest version of the script via `npx @uniswap/deploy-v3 --help`.
+Check .env.example file to see all the required environment secrets.
 
-As of `v1.0.3` the arguments are:
+Enter the required and optional variables to .env.
+
+As of `v3.0.0` the variables are:
 
 ```text
-> npx @uniswap/deploy-v3 --help
-Usage: npx @uniswap/deploy-v3 [options]
 
 Options:
-  -pk, --private-key <string>               Private key used to deploy all contracts
-  -j, --json-rpc <url>                      JSON RPC URL where the program should be deployed
-  -w9, --weth9-address <address>            Address of the WETH9 contract on this chain
-  -ncl, --native-currency-label <string>    Native currency label, e.g. ETH
-  -o, --owner-address <address>             Contract address that will own the deployed artifacts after the script runs
-  -s, --state <path>                        Path to the JSON file containing the migrations state (optional) (default: "./state.json")
-  -v2, --v2-core-factory-address <address>  The V2 core factory address used in the swap router (optional)
-  -g, --gas-price <number>                  The gas price to pay in GWEI for each transaction (optional)
-  -c, --confirmations <number>              How many confirmations to wait for after each transaction (optional) (default: "2")
-  -V, --version                             output the version number
-  -h, --help                                display help for command
+
+  PRIVATE_KEY <string>                  Private key used to deploy all contracts
+  JSON_RPC_URL <url>                    JSON RPC URL where the program should be deployed
+  WETH9_ADDRESS <address>               Address of the WETH9 contract on this chain
+  NATIVE_CURRENCY_LABEL <string>        Native currency label, e.g. ETH
+  OWNER_ADDRESS <address>               Contract address that will own the deployed artifacts after the script runs
+  STATE_PATH <path>                     Path to the JSON file containing the migrations state (optional) (default: "./state.json")
+  V2_CORE_FACTORY_ADDRESS <address>     The V2 core factory address used in the swap router (optional)
+  GAS_PRICE <number>                    The gas price to pay in GWEI for each transaction (optional)
+  CONFIRMATIONS <number>                How many confirmations to wait for after each transaction (optional) (default: "2")
 ```
 
 The script runs a set of migrations, each migration deploying a contract or executing a transaction. Migration state is
@@ -65,9 +64,9 @@ only mines blocks when the transactions is queued (e.g. a local testnet), you mu
 
 ## Development
 
-To run unit tests, run `yarn test`.
+To run unit tests, run `pnpm test`.
 
-For testing the script, run `yarn start`.
+For testing the script, run `pnpm start`.
 
 To publish the script, first create a version: `npm version <version identifier>`, then publish via `npm publish`.
 Don't forget to push your tagged commit!

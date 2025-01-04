@@ -1,5 +1,5 @@
 {
-  "name": "@uniswap/deploy-v3",
+  "name": "@uniswap-v3/deploy-evm",
   "version": "1.0.4",
   "description": "Deploy Uniswap V3 smart contracts",
   "bin": "dist/index.js",
@@ -9,11 +9,12 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha",
+    "prebuild": "pnpm install --shamefully-hoist",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && ncc build index.ts -o dist -m",
     "postbuild": "cat shebang.txt dist/index.js > dist/index.cmd.js && mv dist/index.cmd.js dist/index.js",
-    "prestart": "yarn build",
+    "prestart": "pnpm build",
     "start": "node dist/index.js",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "pnpm build"
   },
   "files": [
     "dist/"
